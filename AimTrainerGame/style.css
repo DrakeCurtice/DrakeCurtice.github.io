@@ -1,0 +1,152 @@
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #333;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        #playArea {
+            position: absolute;
+            top: 65px;
+            left: 35px;
+            right: 35px;
+            bottom: 35px;
+            border: 2px solid grey;
+            pointer-events: none;
+            box-sizing: border-box;
+        }
+        #target {
+    width: 30px;
+    height: 30px;
+    background-color: yellow;
+    border-radius: 50%;
+    position: fixed;
+    display: block; /* Changed to block to allow animations */
+    opacity: 0; /* Start as invisible */
+    cursor: pointer;
+    user-select: none;
+    z-index: 1000;
+    transform: scale(0.5); /* Start smaller */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth transition for transform and opacity */
+}
+
+        /* Additional classes for animation */
+         .target-visible {
+        display: block;
+        transform: scale(1); /* Scale to normal size */
+        opacity: 1;  /* Fully visible */
+        }
+
+        .target-hidden {
+        transform: scale(0.5); /* Start from a smaller size */
+        opacity: 0;  /* Start fully transparent */
+        }
+        #info, #toggleMode {
+            position: fixed;
+            top: 10px;
+            font-size: 16px;
+            z-index: 1100;
+        }
+        #info {
+            display: none;
+            left: 10px;
+        }
+        #toggleMode {
+            right: 10px;
+            cursor: pointer;
+            display: block;
+        }
+        .screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 1050;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #settings, #highScores, #endScreenStats {
+            margin-top: 10px;
+        }
+        label {
+            margin-right: 5px;
+        }
+        input, select {
+            margin-bottom: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    
+        h3 {
+            font-weight: normal;
+        }
+        #countdown {
+    display: none; /* Ensure it's hidden on load */
+    position: fixed;
+    top: 50;
+    left: 50;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    align-items: center;
+    justify-content: center;
+   
+}
+#countdownNumber {
+    color: rgb(0,0,0,0.4);
+    font-size: 200px;
+}
+
+/* Crosshair styles */
+#crosshair {
+    width: 1px;
+    height: 1px;
+    position: fixed;
+    pointer-events: none;
+    display: block;
+    z-index: 2000;
+}
+
+/* Default crosshair styles (white for night mode) */
+#crosshair:before,
+#crosshair:after {
+    content: '';
+    position: absolute;
+    background-color: white; /* White for dark mode */
+    width: 20px;
+    height: 2px;
+}
+
+#crosshair:before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg); /* Vertical line */
+}
+
+#crosshair:after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg); /* Horizontal line */
+}
+
+/* Crosshair styles for light mode (black) */
+.body-light-mode #crosshair:before,
+.body-light-mode #crosshair:after {
+    background-color: black; /* Black for light mode */
+}
+        * {
+           cursor: none !important; 
+        }

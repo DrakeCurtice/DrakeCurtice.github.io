@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Aim Trainer with Game Settings and End Screen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onclick="recordClick()">
+    <div id="crosshair" style="position: fixed; pointer-events: none;"></div>
+    <div id="playArea"></div>
+    <div id="countdown" class="screen hidden">
+        <span id="countdownNumber">3</span>
+    </div>
+    <div id="startScreen" class="screen">
+        <div id="testing" class ="testing">
+            <h1>FPS Aim Trainer</h1>
+            <h3>Click on targets as quickly as possible to test your aim and reaction time.</h3>
+            <h3>Adjust game settings below to customize your training experience.</h3>
+        </div>
+        <div id="settings">
+            <label for="duration">Game Duration (s):</label>
+            <input type="number" id="duration" value="15"><br>
+            <label for="targetSize">Target Size (px):</label>
+            <input type="number" id="targetSize" value="90"><br>
+            <label for="targetTime">Target Visibility Time (s):</label>
+            <input type="number" id="targetTime" value="1.5"><br>
+            <label for="targetColor">Target Color:</label>
+            <input type="color" id="targetColor" value="#FFFF00">
+        </div>
+        <button onclick="startGame(event)">Start Game</button>
+        <div id="highScores"><p>High Score: <span id="highScore">0</span></p></div>
+    </div>
+    <div id="endScreen" class="screen hidden">
+        <h1>Game Over!</h1>
+        <div id="endScreenStats">
+            <p>Targets Hit: <span id="successfulClicks">0</span></p>
+            <p>Targets Disappeared: <span id="missCount">0</span></p>
+            <p>Misclicks: <span id="misclicks">0</span></p>
+        </div>
+        <button onclick="resetGame()">Restart</button>
+    </div>
+    <div id="info">Time: 0s | Clicks: 0</div>
+    <div id="target" onclick="incrementClicks(event)"></div>
+    <div id="toggleMode" onclick="toggleNightMode()">Night Mode</div>
+
+    <audio id="hitSound" src="happy-pop-2-185287-[AudioTrimmer.com].mp3"></audio>
+    <audio id="missSound" src="error-126627-[AudioTrimmer.com].mp3"></audio>
+    <audio id="misclickSound" src="happy-pop-2-185287- (mp3cut.net).mp3"></audio>
+
+    <script src="script.js"></script>
+   
+</body>
+</html>
